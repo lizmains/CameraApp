@@ -108,28 +108,26 @@ public partial class MainPage : ContentPage
         //
         // var stream = await result.OpenReadAsync();
         // myVideo.Source = ImageSource.FromStream(() => stream);
-        
-        var results = await MediaGallery.PickAsync(1, MediaFileType.Image);
+
+        // Not using MediaGallery, but the built-in MediaPicker
+        var results = await MediaPicker.PickPhotoAsync();
         //For some reason none of this is being hit at all...
-        DisplayAlert("You are here 1", "here 1", "OK");
-        
-        if (results?.Files == null)
+        await DisplayAlert("You are here 1", "here 1", "OK");
+
+        if (results == null)
         {
             await DisplayAlert("Null Photos", "The photos you have selected are null", "OK");
             return;
         }
-        foreach (var media in results.Files)
-        {
-            var fileName = media.NameWithoutExtension;
-            var extension = media.Extension;
-            var contentType = media.ContentType;
-            var readIt = await media.OpenReadAsync();
 
-            
-            await DisplayAlert(fileName, $"Extension: {extension}, Content-type: {contentType}", "OK");
+        var fileName = Path.GetFileNameWithoutExtension(results.FullPath);
+        var extension = Path.GetExtension(results.FullPath);
+        var contentType = results.ContentType;
+        var readIt = await results.OpenReadAsync();
 
-            myVideo.Source = ImageSource.FromStream(() => readIt);
-        }
+        await DisplayAlert(fileName, $"Extension: {extension}, Content-type: {contentType}", "OK");
+
+        myVideo.Source = ImageSource.FromStream(() => readIt);
 
         await DisplayAlert("You are here", "Here", "OK");
     }
