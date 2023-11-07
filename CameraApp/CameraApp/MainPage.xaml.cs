@@ -4,8 +4,6 @@ namespace CameraApp;
 
 public partial class MainPage : ContentPage
 {
-    int count = 0;
-
     public MainPage()
     {
         InitializeComponent();
@@ -52,7 +50,8 @@ public partial class MainPage : ContentPage
         // var vid = await CrossMedia.Current.TakePhotoAsync(new StoreVideoOptions
         
         //IN THE WORKS
-        var video = await MediaPicker.CapturePhotoAsync();
+        // var video = await MediaPicker.CapturePhotoAsync();
+        var video = await MediaGallery.CapturePhotoAsync();
         await MediaGallery.SaveAsync(MediaFileType.Image, await video.OpenReadAsync(), "myMedia.png");
         if (video == null)
         {

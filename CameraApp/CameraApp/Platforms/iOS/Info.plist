@@ -28,5 +28,11 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Need to access photos and videp</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Need to access photos and videos</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need to access photos and videos</string>
 </dict>
 </plist>
