@@ -12,7 +12,7 @@
             <Label
                 Text="Video"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Device selction for BT"
+                SemanticProperties.Description="Device selection for BT"
                 FontSize="18"
                 HorizontalOptions="Center" />
             
