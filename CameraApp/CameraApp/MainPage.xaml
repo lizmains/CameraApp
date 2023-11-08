@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="CameraApp.MainPage">
 
     <ScrollView>
@@ -9,12 +10,11 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Label
-                Text="Video"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Device selection for BT"
-                FontSize="18"
-                HorizontalOptions="Center" />
+            <toolkit:MediaElement
+                x:Name="mediaElement"
+                ShouldAutoPlay="True"
+                Source="CameraApp/Resources/Images/squirrel.mp4"/>
+            
             
             <Image
                 x:Name="myVideo"

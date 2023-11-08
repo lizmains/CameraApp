@@ -1,4 +1,5 @@
-﻿using NativeMedia;
+﻿using CommunityToolkit.Maui.Views;
+using NativeMedia;
 
 namespace CameraApp;
 
@@ -54,7 +55,7 @@ public partial class MainPage : ContentPage
     {
         
         // Not using MediaGallery, but the built-in MediaPicker
-        var results = await MediaPicker.PickPhotoAsync();
+        var results = await MediaPicker.PickVideoAsync();
         // var results = await MediaGallery.PickAsync(1, MediaFileType.Image)
         
         //For some reason none of this is being hit at all...
@@ -73,7 +74,9 @@ public partial class MainPage : ContentPage
         
         await DisplayAlert(fileName, $"Extension: {extension}, Content-type: {contentType}", "OK");
         
-        myVideo.Source = ImageSource.FromStream(() => readIt);
+        // myVideo.Source = ImageSource.FromStream(() => readIt);
+
+        mediaElement.Source = MediaSource.FromResource(results.FullPath);
         
         await DisplayAlert("You are here", "Here", "OK");
     }
